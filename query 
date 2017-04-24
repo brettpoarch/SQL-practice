@@ -1,0 +1,69 @@
+SELECT * FROM movies;
+
+SELECT title, movieid
+FROM movies
+LIMIT 10;
+
+SELECT title, movieid
+FROM movies
+WHERE movieid = 485;
+
+SELECT movieid, title
+FROM movies
+WHERE lower(title) LIKE '%made in america%';
+
+SELECT title, movieid
+FROM movies
+ORDER BY title ASC
+LIMIT 10;
+
+SELECT title
+FROM movies
+WHERE title LIKE '%(2002)%';
+
+SELECT title
+FROM movies
+WHERE lower(title) LIKE '%godfather%';
+
+SELECT title
+FROM movies
+WHERE lower(genres) LIKE '%comedy%';
+
+SELECT title
+FROM movies
+WHERE (lower(genres) LIKE '%comedy%' AND lower(title) like '%(2000)%');
+
+SELECT title, genres
+FROM movies
+WHERE (lower(title) LIKE '%death%' AND lower(genres) LIKE '%comedy%');
+
+SELECT title
+FROM movies
+WHERE (lower(title) LIKE '%super%' AND (lower(title) LIKE '%(2001)%' OR lower(title) LIKE '%(2002)%'));
+
+SELECT m.title, r.rating
+FROM movies m
+JOIN ratings r ON m.movieid = r.movieid
+WHERE lower(m.title) LIKE '%godfather%';
+
+SELECT m.title, r.rating
+FROM movies m
+JOIN ratings r ON m.movieid = r.movieid
+WHERE lower(m.title) LIKE '%godfather%'
+ORDER BY r.timestamp DESC;
+
+SELECT m.title, l.imdbid
+FROM movies m
+JOIN links l ON m.movieid = l.movieid
+WHERE lower(m.title) LIKE '%(2005%)';
+
+SELECT m.title, r.rating
+FROM movies m
+JOIN ratings r ON m.movieid = r.movieid
+WHERE r.rating = NULL;
+
+SELECT m.title, g.genres
+FROM movie_genre mg
+JOIN movies m ON mg.movieid = m.movieid
+JOIN genre g ON mg.genre_id = g.id
+WHERE mg.genre_id = 15;
