@@ -59,8 +59,8 @@ WHERE lower(m.title) LIKE '%(2005%)';
 
 SELECT m.title, r.rating
 FROM movies m
-JOIN ratings r ON m.movieid = r.movieid
-WHERE r.rating = NULL;
+LEFT JOIN ratings r ON m.movieid = r.movieid
+WHERE r.rating IS NULL;
 
 SELECT m.title, g.genres
 FROM movie_genre mg
