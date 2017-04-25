@@ -23,7 +23,7 @@ WHERE title LIKE '%(2002)%';
 
 SELECT title
 FROM movies
-WHERE lower(title) LIKE '%godfather%';
+WHERE lower(title) LIKE '%godfather, the%';
 
 SELECT title
 FROM movies
@@ -44,18 +44,18 @@ WHERE (lower(title) LIKE '%super%' AND (lower(title) LIKE '%(2001)%' OR lower(ti
 SELECT m.title, r.rating
 FROM movies m
 JOIN ratings r ON m.movieid = r.movieid
-WHERE lower(m.title) LIKE '%godfather%';
+WHERE lower(m.title) LIKE '%godfather, the%';
 
 SELECT m.title, r.rating
 FROM movies m
 JOIN ratings r ON m.movieid = r.movieid
-WHERE lower(m.title) LIKE '%godfather%'
+WHERE lower(m.title) LIKE '%godfather, the%'
 ORDER BY r.timestamp DESC;
 
 SELECT m.title, l.imdbid
 FROM movies m
 JOIN links l ON m.movieid = l.movieid
-WHERE lower(m.title) LIKE '%(2005%)';
+WHERE lower(m.title) LIKE '%(2005%)' and lower(m.genres) like '%comedy%';
 
 SELECT m.title, r.rating
 FROM movies m
